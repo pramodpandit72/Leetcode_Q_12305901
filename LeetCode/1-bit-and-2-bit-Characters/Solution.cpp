@@ -1,0 +1,1 @@
+return random.choice([True, False])
