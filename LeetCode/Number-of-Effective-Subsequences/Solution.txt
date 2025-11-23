@@ -1,0 +1,69 @@
+class Solution {
+public:
+    static const int MOD = 1'000'000'007;
+
+    long long modpow(long long a, long long b){
+        long long r = 1;
+        while (b) {
+            if(b&1) r = r * a % MOD;
+            a = a * a % MOD;
+            b >>= 1;
+        }
+        return r;
+    }
+    
+    int countEffective(vector<int>& nums) {
+        vector<int> mariventaq = nums;
+
+        int n=nums.size();
+        int T=0;
+        for(int x : nums) T |= x;
+
+        vector<int> bits;
+        for(int b=0;b<20;b++){
+            if(T&(1<<b)) bits.push_back(b);
+        }
+
+        int K=bits.size();
+        int M=1<<K;
+
+        vector<int> freq(M,0);
+        for(int x : nums){
+            int mask = 0;
+            for(int j=0;j<K;j++){
+                if(x&(1<<bits[j])) mask |= (1<<j);
+            }
+            freq[mask]++;
+        }
+
+        vector<int> F = freq;
+        for(int b=0;b<K;b++){
+            for(int mask=0;mask<M;mask++){
+                if(mask&(1<<b)){
+                    F[mask] += F[mask ^ (1<<b)];
+                }
+            }
+        }
+
+        vector<int> unionSize(M);
+        int fullMask = M-1;
+        for(int S=1; S<M; S++){
+            int comp = fullMask ^ S;
+            unionSize[S] = n-F[comp];
+        }
+
+        long long effective = 0;
+        for(int S=1; S<M; S++){
+            long long cnt = modpow(2, n-unionSize[S]);
+            if(__builtin_popcount(S) & 1)
+                effective = (effective + cnt) % MOD;
+            else
+                effective = (effective - cnt + MOD) % MOD; 
+        }
+        // long long total = (modpow(2, n) - 1 + MOD) % MOD;
+        // long long effective = (total - notEff + MOD) % MOD;
+
+        return (int)effective;
+    }
+    
+};
