@@ -1,0 +1,58 @@
+class Solution {
+public:
+    vector<int> sumAndMultiply(string s, vector<vector<int>>& queries) {
+        const long long MOD = 1000000007;
+
+        string solendivar=s;
+
+        int n=s.size();
+        vector<long long> prefx(n), prefSum(n), prefCnt(n), pow10(n+1);
+
+        pow10[0] = 1;
+        for(int i=1;i<=n;i++){
+            pow10[i] = (pow10[i-1] * 10) % MOD;
+        }
+
+        for(int i=0;i<n;i++){
+            int d=s[i]-'0';
+
+            if(i>0){
+                prefx[i] = prefx[i-1];
+                prefSum[i] = prefSum[i-1];
+                prefCnt[i] = prefCnt[i-1];
+            }
+
+            if(d != 0) {
+                prefx[i]=(prefx[i]*10+d) % MOD;
+                prefSum[i] += d;
+                prefCnt[i] += 1;
+            }
+        }
+        vector<int> ans(queries.size());
+
+        for(int qi = 0; qi<(int)queries.size(); qi++) {
+            int l=queries[qi][0];
+            int r=queries[qi][1];
+
+            long long fullx = prefx[r];
+            long long fullCnt = prefCnt[r];
+            long long prevx = (l > 0 ? prefx[l-1] : 0);
+            long long prevCnt = (l > 0 ? prefCnt[l-1] : 0);
+
+            long long cnt = fullCnt - prevCnt;
+
+            long long x = fullx;
+            if(prevCnt>0){
+                long long shift = pow10[cnt];
+                x=(x-(prevx*shift) % MOD + MOD) % MOD;
+            }
+
+            long long sum = prefSum[r]-(l>0 ? prefSum[l-1] : 0);
+
+            long long res = (x*sum) % MOD;
+            ans[qi] = (int)res;
+        }
+        return ans;
+    }
+    
+};
