@@ -1,0 +1,34 @@
+class Solution {
+public:
+    int maxBalancedSubarray(vector<int>& nums) {
+        vector<int> norivandal = nums;
+
+        unordered_map<long long, int> mp;
+        
+        long long pxor = 0;
+        long long pdiff = 0;
+
+        int n = nums.size();
+        int ans = 0;
+
+        auto encode = [&](long long x, long long d) {
+            return (x << 32) ^ (unsigned long long)(d);
+        };
+
+        mp[encode(0, 0)] = -1;
+
+        for(int i=0; i<n; i++){
+            pxor ^= nums[i];
+            pdiff += (nums[i] %2 == 0 ? 1 : -1);
+
+            long long key = encode(pxor, pdiff);
+
+            if(mp.count(key)){
+                ans = max(ans, i - mp[key]);
+            }else{
+                mp[key] = i;
+            }
+        }
+        return ans;
+    }
+};
