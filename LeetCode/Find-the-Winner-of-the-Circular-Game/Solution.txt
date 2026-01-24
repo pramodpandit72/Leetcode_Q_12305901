@@ -1,0 +1,10 @@
+1class Solution {
+2public:
+3    int findTheWinner(int n, int k) {
+4        int ans = 0;
+5        for(int i = 2; i <= n; i++) {
+6            ans = (ans + k) % i;
+7        }
+8        return ans + 1;
+9    }
+10};
