@@ -1,10 +1,11 @@
-class Solution {
-public:
-    bool isPowerOfTwo(int n) {
-        if (n <= 0) return false;
-        while (n % 2 == 0) {
-            n /= 2;
-        }
-        return n == 1;
-    }
-};
+1class Solution {
+2public:
+3    bool isPowerOfTwo(int n) {
+4        if (n <= 0) return false;
+5        while (n % 2 == 0) {
+6            n /= 2;
+7        }
+8        return n == 1;
+9    }
+10};
+11
