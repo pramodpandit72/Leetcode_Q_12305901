@@ -1,17 +1,17 @@
-class Solution {
-public:
-    //first
-    vector<int> twoSum(vector<int>& nums,int target){
-        map<int,int>mpp;
-        int n=nums.size();
-        for(int i=0;i<n;i++){
-            int num=nums[i];
-            int moreNeeded = target - num;
-            if(mpp.find(moreNeeded) != mpp.end()) {
-                return {mpp[moreNeeded], i};
-            }
-            mpp[num] = i;
-        }
-        return {-1,-1};
-    }
-};
+1class Solution {
+2public:
+3    
+4    vector<int> twoSum(vector<int>& nums,int target){
+5        map<int,int>mpp;
+6        int n=nums.size();
+7        for(int i=0;i<n;i++){
+8            int num=nums[i];
+9            int moreNeeded = target - num;
+10            if(mpp.find(moreNeeded) != mpp.end()) {
+11                return {mpp[moreNeeded], i};
+12            }
+13            mpp[num] = i;
+14        }
+15        return {-1,-1};
+16    }
+17};
