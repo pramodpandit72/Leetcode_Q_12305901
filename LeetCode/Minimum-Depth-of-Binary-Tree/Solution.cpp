@@ -41,18 +41,17 @@
 41            for (int i = 0; i < size; i++) {
 42                TreeNode* node = q.front();
 43                q.pop();
-44
-45                // leaf node found
-46                if (!node->left && !node->right)
-47                    return depth;
-48
-49                if (node->left)
-50                    q.push(node->left);
-51                if (node->right)
-52                    q.push(node->right);
-53            }
-54            depth++;
-55        }
-56        return depth;
-57    }
-58};
+44                
+45                if (!node->left && !node->right)
+46                    return depth;
+47
+48                if (node->left)
+49                    q.push(node->left);
+50                if (node->right)
+51                    q.push(node->right);
+52            }
+53            depth++;
+54        }
+55        return depth;
+56    }
+57};
