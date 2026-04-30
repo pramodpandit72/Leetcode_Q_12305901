@@ -1,11 +1,10 @@
 # Remove Duplicates from Sorted Array
 
-Can you solve this real interview question? Remove Duplicates from Sorted Array - Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place [https://en.wikipedia.org/wiki/In-place_algorithm] such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+Can you solve this real interview question? Remove Duplicates from Sorted Array - Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place [https://en.wikipedia.org/wiki/In-place_algorithm] such that each unique element appears only once. The relative order of the elements should be kept the same.
 
-Consider the number of unique elements of nums to be k, to get accepted, you need to do the following things:
+Consider the number of unique elements in nums to be k . After removing duplicates, return the number of unique elements k.
 
- * Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially. The remaining elements of nums are not important as well as the size of nums.
- * Return k.
+The first k elements of nums should contain the unique numbers in sorted order. The remaining elements beyond index k - 1 can be ignored.
 
 Custom Judge:
 
