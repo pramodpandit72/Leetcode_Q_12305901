@@ -1,35 +1,27 @@
-1/**
-2 * Definition for a binary tree node.
-3 * struct TreeNode {
-4 *     int val;
-5 *     TreeNode *left;
-6 *     TreeNode *right;
-7 *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-8 *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-9 *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-10 * };
-11 */
-12class Solution {
-13public:
-14    bool isMirror(TreeNode* p, TreeNode* q){
-15        if(p==NULL && q==NULL){
-16            return true;
-17        }
-18        if(p==NULL || q==NULL){
-19            return false;
-20        }
-21        if(p->val != q->val){
-22            return false;
-23        }
-24        return isMirror(p->left, q->right) &&
-25               isMirror(p->right, q->left);
+1class Solution {
+2public:
+3    
+4    bool isMirror(TreeNode* left, TreeNode* right) {
+5        
+6        // Both NULL
+7        if (left == NULL && right == NULL)
+8            return true;
+9        
+10        // One NULL
+11        if (left == NULL || right == NULL)
+12            return false;
+13        
+14        // Values must match
+15        if (left->val != right->val)
+16            return false;
+17        
+18        // Check mirror condition
+19        return isMirror(left->left, right->right) &&
+20               isMirror(left->right, right->left);
+21    }
+22    
+23    bool isSymmetric(TreeNode* root) {
+24        
+25        return isMirror(root->left, root->right);
 26    }
-27
-28    bool isSymmetric(TreeNode* root) {
-29        if(root == NULL){
-30            return true;
-31        }
-32
-33        return isMirror(root->left, root->right);
-34    }
-35};
+27};
