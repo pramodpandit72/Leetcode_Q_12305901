@@ -1,0 +1,1 @@
+Input: n = 5, bad = 4
