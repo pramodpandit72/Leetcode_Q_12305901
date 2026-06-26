@@ -5,9 +5,10 @@
 5        vector<int> prefix(n);
 6
 7        prefix[0] = nums[0];
-8        for(int i = 1; i < n; i++) {
-9            prefix[i] = prefix[i-1] + nums[i];
-10        }
-11        return prefix;
-12    }
-13};
+8
+9        for(int i = 1; i < n; i++) {
+10            prefix[i] = prefix[i - 1] + nums[i];
+11        }
+12        return prefix;
+13    }
+14};
