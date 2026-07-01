@@ -1,8 +1,8 @@
 1class Solution {
 2public:
 3    bool isIsomorphic(string s, string t) {
-4        unordered_map<char, int> mp1;
-5        unordered_map<char, int> mp2;
+4        unordered_map<char, char> mp1;
+5        unordered_map<char, char> mp2;
 6
 7        for(int i = 0; i < s.size(); i++) {
 8            if(mp1.count(s[i]) && mp1[s[i]] != t[i]) return false;
