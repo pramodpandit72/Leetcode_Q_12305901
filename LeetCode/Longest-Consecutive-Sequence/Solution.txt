@@ -1,0 +1,43 @@
+1class Solution {
+2public:
+3    int longestConsecutive(vector<int>& nums) {
+4        unordered_set<int> st;
+5        st.insert(nums.begin(), nums.end());
+6        int maxSeq = 0;
+7        for(int x : st) {
+8            if(st.find(x - 1) == st.end()) {
+9                int curr = x;
+10                int count = 1;
+11
+12                while(st.find(curr + 1) != st.end()) {
+13                    curr++;
+14                    count++;
+15                }
+16                maxSeq = max(count, maxSeq);
+17            }
+18        }
+19
+20        return maxSeq;
+21
+22        // if(nums.empty()) return 0;
+23  
+24        // int maxCount = 1;
+25        // int count = 1;
+26        // sort(nums.begin(), nums.end());
+27
+28        // for(int i = 1; i < nums.size(); i++) {
+29        //     if(nums[i] == nums[i - 1]){
+30        //         continue;
+31        //     }
+32        //     if(nums[i - 1] == nums[i] - 1){
+33        //         count++;
+34        //     }else{
+35        //         count = 1;
+36        //     }
+37        // maxCount = max(maxCount, count);
+38            
+39        // }
+40        // return maxCount;
+41
+42    }
+43};
