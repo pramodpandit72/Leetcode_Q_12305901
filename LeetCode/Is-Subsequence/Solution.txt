@@ -1,0 +1,25 @@
+1class Solution {
+2public:
+3    bool isSubsequence(string s, string t) {
+4        int i = 0, j = 0;
+5
+6        while(i < s.size() && j < t.size()) {
+7            if(s[i] == t[j]) {
+8                i++;
+9            }
+10            j++;
+11        }
+12        return i == s.size();
+13
+14    //     int n = s.size();
+15    //     int count = 0;
+16        
+17    //     for(int i = 0; i < t.size(); i++) {
+18    //         if(count < n && s[count] == t[i]){
+19    //             count++;
+20    //         }   
+21    //     }
+22
+23    //     return count == n;
+24    }
+25};
